@@ -58,8 +58,8 @@ function App() {
         <ul >
           {emails.map((email) =>
             <li key={email.id} className={`email ${email.read ? "read" : "unread"}`}>
-              <label><input type='checkbox' onChange={(e) => { toggleRead(email) }}></input></label>
-              <label><input type='checkbox' className='star-checkbox' onChange={(e) => { toggleStar(email) }}></input></label>
+              <label><input type='checkbox' checked = {email.read} onChange={(e) => { toggleRead(email) } }></input></label>
+              <label><input type='checkbox' className='star-checkbox' checked = {email.starred} onChange={(e) => { toggleStar(email) } }></input></label>
 
               <span>{email.sender}</span>
               <span className='title'>{email.title}</span>
