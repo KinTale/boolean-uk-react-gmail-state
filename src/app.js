@@ -9,18 +9,12 @@ function App() {
   const [emails, setEmails] = useState(initialEmails)
 
 
-  const toggleRead = (email) => { setEmails(emails.map(x =>  x === email ? { ...email, read: !email.read } : x ))
-  
-   
+  const toggleRead = (email) => {
+    setEmails(emails.map(x => x === email ? { ...email, read: !email.read } : x))
   }
 
   const toggleStar = (email) => {
-    const starred = emails.map(x => {
-      if (x === email) {
-        return { ...email, starred: !email.starred }
-      } return x
-    })
-    setEmails(starred)
+    setEmails(emails.map(x => x === email ? { ...email, starred: !email.starred } : x))
   }
 
   const getReadEmails = (email) => {
@@ -63,7 +57,7 @@ function App() {
       <main className="emails">
         <ul >
           {emails.map((email) =>
-            <li key={email.id} className={`email ${email.read && "read" || "unread"}`}>
+            <li key={email.id} className={`email ${email.read ? "read" : "unread"}`}>
               <label><input type='checkbox' onChange={(e) => { toggleRead(email) }}></input></label>
               <label><input type='checkbox' className='star-checkbox' onChange={(e) => { toggleStar(email) }}></input></label>
 
